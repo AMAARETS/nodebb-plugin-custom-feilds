@@ -1,5 +1,5 @@
 {
-  "id": "nodebb-plugin-best-registration",
+  "id": "nodebb-plugin-custom-feilds",
   "name": "best-registration",
   "description": "מוסיף שדות לרישום משתמשים.",
   "url": "https://github.com/AMAARETS/nodebb-plugin-custom-feilds",
@@ -7,7 +7,11 @@
   "hooks": [
 	{
 		"hook": "filter:register.build",
-		"method": "addField"
+		"method": "addFieldRegister"
+	},
+	{
+		"hook": "filter:account/profile.build",
+		"method": "addFieldProfile"
 	},
 	{
 		"hook": "filter:register.check",
@@ -23,6 +27,6 @@
 	}
   ],
   "nbbpm": {
-    "compatibility": "^1.17.0"
+    "compatibility": "^4.0.0"
   }
 }
