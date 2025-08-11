@@ -153,15 +153,15 @@ plugin.addFieldProfile = function(data) {
 }
 plugin.checkRegister = function(data, callback) {
 	// ✅ בדיקה של שדות חדשים
-	if (!params.req.body['typeProfile']) {
-		return callback({ source: 'typeProfile', message: 'יש לבחור את סוג הפרופיל.' }, params);
+	if (!data.req.body['typeProfile']) {
+		return callback({ source: 'typeProfile', message: 'יש לבחור את סוג הפרופיל.' }, data);
 	}
 
-	callback(null, params);
+	callback(null, data);
 };
 plugin.saveTypeProfile = async function (data) {
 	if (data.data.typeProfile !== undefined) {
-		await User.setUserField(data.user.uid, 'typeProfile', user.data.typeProfile);
+		await User.setUserField(data.user.uid, 'typeProfile', data.data.typeProfile);
 		if (data.data.typeProfile === 'businessPersonalName') {
 			await Groups.join(['עסק בתהליך אימות'], data.user.uid);
 		}
